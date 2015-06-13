@@ -22,19 +22,29 @@ Building is extremely simple:
     ./configure
     make
 
-To start pi-blaster and have it relaunched automatically on every reboot:
+Installing pi-blaster is also simple:
 
     sudo make install
 
-## How to start manually
+## How to start
 
 To start pi-blaster manually run:
 
     sudo ./pi-blaster
-    
+
+Please be noted that if you are not using systemd (for example, on Debian 7), `sudo make install` will set pi-blaster to start **automatically** on every reboot.
+
+If you are using systemd (for example, on Debian 8), `pi-blaster.service` is installed and **diabled** by default. You need to run the following command to set `pi-blaster` to autostart:
+
+    sudo systemctl enable pi-blaster.service
+
 ## How to uninstall
 
-Simply run:
+If you are using systemd, you should disable the service first:
+
+    sudo systemctl disable pi-blaster.service
+
+Then simply run:
 
     sudo make uninstall
     
